@@ -1,0 +1,30 @@
+[project]
+name = "sikk2d-psd-import"
+version = "0.0.0"
+description = "Phase 0 entry point for the future Sikk2d PSD importer"
+requires-python = ">=3.12,<3.13"
+dependencies = ["psd-tools>=1.23,<2", "Pillow>=11,<13"]
+
+[project.scripts]
+sikk2d-psd-import = "psd_import.cli:main"
+
+[build-system]
+requires = ["setuptools>=75"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["tools"]
+include = ["psd_import*"]
+
+[dependency-groups]
+dev = ["pytest>=8,<10", "ruff>=0.14,<1"]
+
+[tool.pytest.ini_options]
+testpaths = ["tools/psd_import/tests"]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 88
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]

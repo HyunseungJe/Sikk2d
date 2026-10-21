@@ -1,0 +1,17 @@
+node_modules/
+dist/
+.venv/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+playwright-report/
+test-results/
+# User source artwork and all derived bundles stay outside the repository.
+*.[pP][sS][dD]
+*.[pP][sS][bB]
+Assets/
+private-assets/
+bundles/
+.env
+.env.*

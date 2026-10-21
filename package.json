@@ -1,0 +1,35 @@
+{
+  "name": "sikk2d",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "app"
+  ],
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "npm --workspace app run dev --",
+    "build": "npm run build -w app",
+    "preview": "npm --workspace app run preview --",
+    "typecheck": "npm run typecheck -w app",
+    "lint": "eslint . --max-warnings 0",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "npm run test -w app",
+    "test:e2e": "playwright test",
+    "python:check": "uv run ruff check tools && uv run ruff format --check tools && uv run pytest",
+    "check": "npm run format:check && npm run lint && npm run typecheck && npm test && npm run build && npm run python:check && npm run test:e2e"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.5",
+    "@playwright/test": "^1.58.0",
+    "@types/node": "^24.0.0",
+    "eslint": "^9.39.5",
+    "eslint-config-prettier": "^10.0.0",
+    "prettier": "^3.0.0",
+    "typescript": "~5.9.3",
+    "typescript-eslint": "^8.0.0"
+  }
+}

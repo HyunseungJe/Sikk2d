@@ -1,0 +1,7 @@
+package-lock.json
+node_modules/
+app/dist/
+.venv/
+uv.lock
+playwright-report/
+test-results/
