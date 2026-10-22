@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Sikk2d layer bundle manifest v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "canvas", "layers", "warnings"],
+  "properties": {
+    "version": { "const": 1, "type": "integer" },
+    "canvas": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["width", "height"],
+      "properties": {
+        "width": { "type": "integer", "minimum": 1 },
+        "height": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "layers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "name",
+          "image",
+          "order",
+          "x",
+          "y",
+          "width",
+          "height",
+          "visible"
+        ],
+        "properties": {
+          "id": { "type": "string", "pattern": "^layer-[0-9]+(?:-[0-9]+)*$" },
+          "name": { "type": "string" },
+          "image": {
+            "type": "string",
+            "pattern": "^layers/layer-[0-9]+(?:-[0-9]+)*\\.png$"
+          },
+          "order": { "type": "integer", "minimum": 0 },
+          "x": { "type": "integer" },
+          "y": { "type": "integer" },
+          "width": { "type": "integer", "minimum": 1 },
+          "height": { "type": "integer", "minimum": 1 },
+          "visible": { "type": "boolean" },
+          "groupPath": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["code", "message"],
+        "properties": {
+          "code": { "type": "string", "minLength": 1 },
+          "message": { "type": "string", "minLength": 1 },
+          "layerId": {
+            "type": "string",
+            "pattern": "^layer-[0-9]+(?:-[0-9]+)*$"
+          }
+        }
+      }
+    }
+  }
+}

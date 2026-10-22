@@ -19,7 +19,7 @@
     "format:check": "prettier --check .",
     "test": "npm run test -w app",
     "test:e2e": "playwright test",
-    "python:check": "uv run ruff check tools && uv run ruff format --check tools && uv run pytest",
+    "python:check": "uv run ruff check tools && uv run ruff format --check tools && uv run pytest -m \"not integration\" && uv run pytest -m integration -ra -s",
     "check": "npm run format:check && npm run lint && npm run typecheck && npm test && npm run build && npm run python:check && npm run test:e2e"
   },
   "devDependencies": {

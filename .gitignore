@@ -15,3 +15,7 @@ private-assets/
 bundles/
 .env
 .env.*
+# Generated artwork is never versioned, regardless of the output folder.
+*.[pP][nN][gG]
+manifest.json
+comparison.json

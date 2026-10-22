@@ -1,9 +1,13 @@
 [project]
 name = "sikk2d-psd-import"
-version = "0.0.0"
-description = "Phase 0 entry point for the future Sikk2d PSD importer"
+version = "0.1.0"
+description = "Deterministic PSD raster layer bundle converter"
 requires-python = ">=3.12,<3.13"
-dependencies = ["psd-tools>=1.23,<2", "Pillow>=11,<13"]
+dependencies = [
+    "psd-tools[composite]>=1.23,<2",
+    "Pillow>=11,<13",
+    "jsonschema>=4.23,<5",
+]
 
 [project.scripts]
 sikk2d-psd-import = "psd_import.cli:main"
@@ -21,6 +25,7 @@ dev = ["pytest>=8,<10", "ruff>=0.14,<1"]
 
 [tool.pytest.ini_options]
 testpaths = ["tools/psd_import/tests"]
+markers = ["integration: private read-only PSD fixtures (skip when absent)"]
 
 [tool.ruff]
 target-version = "py312"
@@ -28,3 +33,6 @@ line-length = 88
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "UP", "B"]
+
+[tool.setuptools.package-data]
+psd_import = ["manifest-v1.schema.json"]
